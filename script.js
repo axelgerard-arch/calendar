@@ -1,0 +1,173 @@
+const startDate = new Date('2025-11-29');
+const endDate = new Date('2026-01-13');
+const today = new Date('2025-12-13');
+
+const messagesParDate = {
+    "2025-11-29": "💌 Joyeux anniversaire, mon amour !",
+    "2025-11-30": "🥰 Je t'envoie un câlin virtuel",
+    "2025-12-01": "✨ ton sourire illumine ma journée",
+    "2025-12-02": "🌷 Je pense à toi tendrement",
+    "2025-12-03": "💞 Je t'adore, ne l'oublie jamais",
+    "2025-12-04": "🫶 Merci d'être toi",
+    "2025-12-05": "",
+    "2025-12-06": "",
+    "2025-12-07": "",
+    "2025-12-08": "",
+    "2025-12-09": "",
+    "2025-12-10": "",
+    "2025-12-11": "",
+    "2025-12-12": "",
+    "2025-12-13": "",
+    "2025-12-14": "",
+    "2025-12-15": "",
+    "2025-12-16": "",
+    "2025-12-17": "",
+    "2025-12-18": "",
+    "2025-12-19": "",
+    "2025-12-20": "",
+    "2025-12-21": "",
+    "2025-12-22": "",
+    "2025-12-23": "",
+    "2025-12-24": "",
+    "2025-12-25": "🎄 Joyeux Noël chérie !",
+    "2025-12-26": "",
+    "2025-12-27": "",
+    "2025-12-28": "",
+    "2025-12-29": "",
+    "2025-12-30": "",
+    "2025-12-31": "",
+    "2026-01-01": "🥳 Bonne année mon coeur!",
+    "2026-01-02": "",
+    "2026-01-03": "",
+    "2026-01-04": "",
+    "2026-01-05": "",
+    "2026-01-06": "",
+    "2026-01-07": "",
+    "2026-01-08": "",
+    "2026-01-09": "",
+    "2026-01-10": "",
+    "2026-01-11": "",
+    "2026-01-12": "",
+    "2026-01-13": "✨ Jour magique, deux ans ensemble !!!",
+
+};
+
+const messages = [
+    "💖 Toujours dans mon cœur",
+    "✨ Un sourire pour toi",
+    "🌷 Pensée douce pour aujourd'hui",
+    "💞 Je t'adore",
+    "🫶 Merci d'être toi",
+    "🌈 Couleurs de bonheur pour toi",
+    "💫 Rêve joli ce soir",
+    "🍫 Un chocolat virtuel pour toi",
+    "🎶 Une chanson rien que pour toi",
+    "🌟 Tu es magique"
+];
+
+const bubblesContainer = document.getElementById('bubbles');
+const viewportWidth = window.innerWidth;
+const viewportHeight = window.innerHeight;
+const totalDays = Math.ceil((endDate - startDate)/(1000*60*60*24)) + 1;
+
+// --- Fonction utilitaire pour formater la date en 'YYYY-MM-DD' ---
+// Ceci est crucial pour des comparaisons de dates précises
+function formatDate(date) {
+    const d = new Date(date);
+    let month = '' + (d.getMonth() + 1);
+    let day = '' + d.getDate();
+    const year = d.getFullYear();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+
+const todayKey = formatDate(today); // '2025-11-29'
+
+// --- Stockage local pour l'état d'ouverture ---
+// Simule le fait qu'une bulle a été cliquée le jour même.
+// On utilise localStorage pour que l'état persiste après rechargement.
+const openedState = JSON.parse(localStorage.getItem('bubbleOpened')) || {};
+
+for(let i = 0; i < totalDays; i++){
+    const bubble = document.createElement('div');
+    bubble.classList.add('bubble');
+
+    // ... (Position et Animation inchangées) ...
+    bubble.style.top = Math.random() * (viewportHeight - 80) + 'px';
+    bubble.style.left = Math.random() * (viewportWidth - 80) + 'px';
+
+    const anim = ['float1','float2','float3'][Math.floor(Math.random()*3)];
+    const dur = 5 + Math.random()*5;
+    bubble.style.animation = `${anim} ${dur}s ease-in-out infinite alternate`;
+
+    // Date
+    const bubbleDate = new Date(startDate);
+    bubbleDate.setDate(bubbleDate.getDate() + i);
+    const dateKey = formatDate(bubbleDate); // Clé de la date pour la comparaison et le dictionnaire
+
+    // Affichage de la date (Jour/Mois)
+    bubble.textContent = `${bubbleDate.getDate()}/${bubbleDate.getMonth()+1}`;
+
+    // Message
+    const span = document.createElement('span');
+    span.textContent = messagesParDate[dateKey] || messages[i % messages.length];
+    span.style.pointerEvents = 'none';
+    bubble.appendChild(span);
+
+
+    // -----------------------------------------------------------------
+    // LOGIQUE DE CLIC ET D'ÉTAT (MODIFIÉE)
+    // -----------------------------------------------------------------
+
+    // 1. Détermination de l'état de la bulle par rapport à aujourd'hui
+    let state = 'future';
+    if (dateKey === todayKey) {
+        state = 'today'; // Cliquable uniquement aujourd'hui
+    } else if (bubbleDate < today) {
+        state = 'past';  // Ouvert par défaut (reseté)
+    }
+
+    // 2. Application des classes CSS et de l'état d'ouverture
+
+    // État "PASSÉ" : Toujours ouvert
+    if (state === 'past') {
+        bubble.classList.add('opened', 'small');
+        // Retirez l'événement de clic pour les bulles passées
+        bubble.style.pointerEvents = 'none';
+    }
+
+    // État "AUJOURD'HUI" : Cliquable
+    else if (state === 'today') {
+        bubble.classList.add('clickable');
+
+        // Vérification de l'état dans le localStorage (si la bulle a déjà été ouverte aujourd'hui)
+        if (openedState[dateKey] === true) {
+            bubble.classList.add('opened'); // Si déjà ouvert, l'afficher
+        }
+
+        // Gestion du clic
+        bubble.addEventListener('click', () => {
+            if (!bubble.classList.contains('opened')) {
+                bubble.classList.add('opened');
+                // Enregistrer l'état d'ouverture dans le stockage local
+                openedState[dateKey] = true;
+                localStorage.setItem('bubbleOpened', JSON.stringify(openedState));
+            }
+        });
+    }
+
+    // État "FUTUR" : Non cliquable
+    else {
+        bubble.style.pointerEvents = 'none';
+        bubble.addEventListener('click', () => {
+            alert("Cette bulle n'est pas encore prête 💖");
+        });
+    }
+
+    bubblesContainer.appendChild(bubble);
+}

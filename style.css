@@ -1,0 +1,115 @@
+/* --- Base --- */
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: #fff;
+}
+
+#container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: url('fondpastel.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+#bubbles {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* --- Bulles --- */
+.bubble {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background: rgba(255,255,255,0.4);
+    border: 2px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #333;
+    transition: all 0.3s;
+}
+
+.bubble span {
+    display: none;
+    text-align: center;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* --- Bulles ouvertes --- */
+.bubble.opened {
+    width: 200px;
+    height: 200px;
+    z-index: 10;
+    cursor: default;
+    box-shadow: 0 0 20px rgba(255, 192, 203, 0.7),
+    0 0 40px rgba(255, 105, 180, 0.5),
+    0 0 60px rgba(255, 182, 193, 0.3);
+    transition: all 0.5s ease;
+    animation: glowPulse 2s infinite alternate;
+}
+
+.bubble.opened span {
+    display: block;
+}
+
+/* --- Animations flottantes --- */
+@keyframes float1 {
+    0% {transform: translateY(0px) translateX(0px);}
+    50% {transform: translateY(-20px) translateX(10px);}
+    100% {transform: translateY(0px) translateX(0px);}
+}
+@keyframes float2 {
+    0% {transform: translateY(0px) translateX(0px);}
+    50% {transform: translateY(-15px) translateX(-10px);}
+    100% {transform: translateY(0px) translateX(0px);}
+}
+@keyframes float3 {
+    0% {transform: translateY(0px) translateX(0px);}
+    50% {transform: translateY(-25px) translateX(15px);}
+    100% {transform: translateY(0px) translateX(0px);}
+}
+
+/* --- Animation de lueur pulsante --- */
+@keyframes glowPulse {
+    0% {
+        box-shadow: 0 0 20px rgba(255,192,203,0.7),
+        0 0 40px rgba(255,105,180,0.5),
+        0 0 60px rgba(255,182,193,0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(255,192,203,0.8),
+        0 0 50px rgba(255,105,180,0.6),
+        0 0 70px rgba(255,182,193,0.4);
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(255,192,203,0.7),
+        0 0 40px rgba(255,105,180,0.5),
+        0 0 60px rgba(255,182,193,0.3);
+    }
+}
+
+.bubble.small {
+    width: 80px;
+    height: 80px;
+    box-shadow: 0 0 10px rgba(255,192,203,0.5),
+    0 0 20px rgba(255,105,180,0.3);
+}
+
+.bubble.opened:not(.small) {
+    width: 200px;
+    height: 200px;
+}
