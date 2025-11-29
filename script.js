@@ -4,7 +4,7 @@ const today = new Date();
 
 const messagesParDate = {
     "2025-11-29": "Joyeux anniversaire ! (de la part de tout le monde !)",
-    "2025-11-30": "",
+    "2025-11-30": "Je t'aime ma soeur (Manon)",
     "2025-12-01": "Choisis d'être heureuse ici et maintenant (maman)",
     "2025-12-02": "Je pense à toi tout le temps (Axel)",
     "2025-12-03": "Je t'adore, ne l'oublie jamais (Axel)",
@@ -12,22 +12,22 @@ const messagesParDate = {
     "2025-12-05": "Ton sourire illumine ma journée (Axel)",
     "2025-12-06": "Merci d'être toi (Axel)",
     "2025-12-07": "Chaque jour est une nouvelle opportunité de grandir et d'apprendre (maman)",
-    "2025-12-08": "Je t'aime !! (Axel)",
-    "2025-12-09": "Sois contente de te lever le matin (mamie)",
-    "2025-12-10": "",
+    "2025-12-08": "L'essentiel dans la vie est de se sentir aimé et accepté comme tu es (mamie)",
+    "2025-12-09": "Tu es trop gentille (Anae)",
+    "2025-12-10": "Profite de ta vie et de tes amis (Manon)",
     "2025-12-11": "Tu es capable de réaliser tout ce que tu désire (maman)",
     "2025-12-12": "Je suis heureuse que tu sois rentrée dans notre vie (Sandra)",
-    "2025-12-13": "L'essentiel dans la vie est de se sentir aimé et accepté comme tu es (mamie)",
-    "2025-12-14": "",
+    "2025-12-13": "Je t'aime !! (Axel/m-1 <3)",
+    "2025-12-14": "Sois contente de te lever le matin (mamie)",
     "2025-12-15": "Tu dois être fière de ce que tu es et de tout ce que tu accomplis (maman)",
-    "2025-12-16": "",
+    "2025-12-16": "Je te souhaite beaucoup de bonheur (Christophe)",
     "2025-12-17": "Prend le temps de partager la vie avec les autres (mamie)",
-    "2025-12-18": "",
-    "2025-12-19": "",
+    "2025-12-18": "Notre vie on va la passer ensemble c'est promis (Axel)",
+    "2025-12-19": "On te souhaite tout le bonheur du monde (Sandra, Christophe, Anae)",
     "2025-12-20": "Je me concentre sur ce qui compte vraiment (maman)",
     "2025-12-21": "",
     "2025-12-22": "Distribue de l'amour, la vie te le rendra (maman)",
-    "2025-12-23": "",
+    "2025-12-23": "Ta franchise, ta bonne humeur et ta maturité sont de tres belles qualités qui me plaisent (Sophie)",
     "2025-12-24": "Fais toi confiance et trace ton chemin (mamie)",
     "2025-12-25": "Joyeux Noël chérie !",
     "2025-12-26": "Fais de ta vie un rêve, et d'un rêve une réalité (Sandra)",
@@ -36,7 +36,7 @@ const messagesParDate = {
     "2025-12-29": "",
     "2025-12-30": "",
     "2025-12-31": "",
-    "2026-01-01": "🥳 Bonne année mon coeur!",
+    "2026-01-01": "Bonne année mon coeur!",
     "2026-01-02": "",
     "2026-01-03": "",
     "2026-01-04": "",
@@ -48,21 +48,12 @@ const messagesParDate = {
     "2026-01-10": "",
     "2026-01-11": "",
     "2026-01-12": "",
-    "2026-01-13": "✨ Jour magique, deux ans ensemble !!!",
+    "2026-01-13": "Jour magique, deux ans ensemble !!!",
 
 };
 
 const messages = [
-    "💖 Toujours dans mon cœur",
-    "✨ Un sourire pour toi",
-    "🌷 Pensée douce pour aujourd'hui",
-    "💞 Je t'adore",
-    "🫶 Merci d'être toi",
-    "🌈 Couleurs de bonheur pour toi",
-    "💫 Rêve joli ce soir",
-    "🍫 Un chocolat virtuel pour toi",
-    "🎶 Une chanson rien que pour toi",
-    "🌟 Tu es magique"
+    "Je t'aime !!"
 ];
 
 const bubblesContainer = document.getElementById('bubbles');
