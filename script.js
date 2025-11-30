@@ -1,6 +1,6 @@
 const startDate = new Date('2025-11-29');
 const endDate = new Date('2026-01-13');
-const today = new Date('2025-12-28');
+const today = new Date);
 
 const messagesParDate = {
     "2025-11-29": "Joyeux anniversaire ! (de la part de tout le monde !)",
@@ -32,10 +32,7 @@ const messagesParDate = {
     "2025-12-25": "Joyeux Noël chérie !",
     "2025-12-26": "Fais de ta vie un rêve, et d'un rêve une réalité (Sandra)",
     "2025-12-27": "Tu es une belle personne ne l'oublie jamais (Vincent)",
-    "2025-12-28": "Coucouuu mvvvv 💕
-Je repense à nos vacances à l’île d’Oléron : les dodos en tente, tous nos fous rires, les plages, le vélo… et évidemment le fameux cahier de vacances qui nous a pris la tête toute la matinée jusqu’au repas du midi 😅 #traumatiser
-Mais franchement, maintenant qu’on y repense (et qu’on n’a plus de cahier 😌), ça reste un super souvenir. Avec toi, même les galères deviennent marrantes. »
-Vivement les prochaines vacances à îles d’Oléron.",
+    "2025-12-28": "",
     "2025-12-29": "",
     "2025-12-30": "",
     "2025-12-31": "",
