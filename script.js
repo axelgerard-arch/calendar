@@ -1,6 +1,6 @@
 const startDate = new Date('2025-11-29');
 const endDate = new Date('2026-01-13');
-const today = new Date();
+const today = new Date('2025-12-28');
 
 const messagesParDate = {
     "2025-11-29": "Joyeux anniversaire ! (de la part de tout le monde !)",
